@@ -1,0 +1,16 @@
+
+version: "3.7"
+
+services:
+
+  react-prod:
+    container_name: react-prod
+    build:
+      context: .
+      dockerfile:
+        Dockerfile.prod
+        # map the exposed port from the underlying service to a port exposed to the outside
+        # in this case  map port 80 exposed by nginx to port 3000 on the outside
+        # to be used to access the container from the outside
+    ports:
+      - "8000:80"
